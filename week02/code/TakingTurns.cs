@@ -15,7 +15,10 @@
         // Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: 
+        // Defect(s) Found:
+        //<summary>
+        //The test displays the expected results indicated for every player.
+        //</summary> 
 
         Console.WriteLine("---------");
 
@@ -40,6 +43,8 @@
 
         // Defect(s) Found: 
 
+        //The test dispalyed expected turns for each player
+
         Console.WriteLine("---------");
 
         // Test 3
@@ -49,14 +54,15 @@
         Console.WriteLine("Test 3");
         players = new TakingTurnsQueue();
         players.AddPerson("Bob", 2);
-        players.AddPerson("Tim", 0);
+        players.AddPerson("Tim", 110);
         players.AddPerson("Sue", 3);
-        // Console.WriteLine(players);
+        Console.WriteLine(players);
         for (int i = 0; i < 10; i++) {
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
         // Defect(s) Found: 
+        //Test fails for it displayes "No one in the queue " yet Tim's turns are infinity.
 
         Console.WriteLine("---------");
 
@@ -74,6 +80,7 @@
             // Console.WriteLine(players);
         }
         // Defect(s) Found: 
+        //The test fails to keep Tim in the queue forever.
 
         Console.WriteLine("---------");
 
@@ -84,5 +91,6 @@
         players = new TakingTurnsQueue();
         players.GetNextPerson();
         // Defect(s) Found:
+        //the test passes.
     }
 }
