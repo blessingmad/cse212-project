@@ -109,7 +109,13 @@ public static class SetsAndMapsTester {
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
     private static void DisplayPairs(string[] words) {
         // To display the pair correctly use something like:
-        // Console.WriteLine($"{word} & {pair}");
+        var word = new HashSet<string>();
+        foreach (var pair in words)
+        {
+            if ( word.Contains(word , pair))
+        
+        Console.WriteLine($"{word} & {pair}");
+        }
         // Each pair of words should displayed on its own line.
     }
 
@@ -132,6 +138,7 @@ public static class SetsAndMapsTester {
         foreach (var line in File.ReadLines(filename)) {
             var fields = line.Split(",");
             // Todo Problem 2 - ADD YOUR CODE HERE
+            var degree = int.Parse(fields[3]);
         }
 
         return degrees;
