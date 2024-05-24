@@ -60,9 +60,11 @@ public static class ArraysTester {
         // TODO Problem 2 Start
         //the for loop loops the data in i times and inserts a new number greater than 0 
         //the loop rotates the numbers inserted and remove 
+            amount = amount % data.Count;
         for (int i = 0; i < amount; i++){
-            data.Insert (0, data [1]);
-            data.Remove(data.Count - 1);
+            int lastNumber = data[data.Count - 1];
+            data.RemoveAt(data.Count - 1);
+            data.Insert(0, lastNumber);
         }
         
 
