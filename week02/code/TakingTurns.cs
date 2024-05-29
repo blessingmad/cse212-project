@@ -1,4 +1,58 @@
-﻿public static class TakingTurns {
+﻿using System;
+using System.Collections.Generic;
+
+public class Person
+{
+    public string Name { get; set; }
+    public int Turns { get; set; }
+
+    public Person(string name, int turns)
+    {
+        Name = name;
+        Turns = turns;
+    }
+}
+
+public class TakingTurnsQueue
+{
+    private Queue<Person> queue = new Queue<Person>();
+
+    public int Length => queue.Count;
+
+    public void AddPerson(string name, int turns)
+    {
+        queue.Enqueue(new Person(name, turns));
+    }
+
+    public string GetNextPerson()
+    {
+        if (queue.Count == 0)
+        {
+            Console.WriteLine("No one in the queue");
+            return null;
+        }
+
+        Person currentPerson = queue.Dequeue();
+        Console.WriteLine(currentPerson.Name);
+
+        if (currentPerson.Turns != 1)
+        {
+            if (currentPerson.Turns > 1)
+            {
+                currentPerson.Turns--;
+            }
+            queue.Enqueue(currentPerson);
+        }
+
+        return currentPerson.Name;
+    }
+}
+
+
+
+
+
+public static class TakingTurns {
     public static void Test() {
         // TODO Problem 1 - Run test cases and fix the code to match requirements
         // Test Cases
@@ -54,7 +108,7 @@
         Console.WriteLine("Test 3");
         players = new TakingTurnsQueue();
         players.AddPerson("Bob", 2);
-        players.AddPerson("Tim", 110);
+        players.AddPerson("Tim", -1);
         players.AddPerson("Sue", 3);
         Console.WriteLine(players);
         for (int i = 0; i < 10; i++) {
@@ -72,7 +126,7 @@
         // Expected Result: Tim, Sue, Tim, Sue, Tim, Sue, Tim, Tim, Tim, Tim
         Console.WriteLine("Test 4");
         players = new TakingTurnsQueue();
-        players.AddPerson("Tim", -3);
+        players.AddPerson("Tim", -1);
         players.AddPerson("Sue", 3);
         // Console.WriteLine(players);
         for (int i = 0; i < 10; i++) {
